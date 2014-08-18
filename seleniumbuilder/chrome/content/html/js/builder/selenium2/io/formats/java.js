@@ -257,7 +257,7 @@ builder.selenium2.io.formats.java_info = {
     "switchToWindow":
       "        wd = (FirefoxDriver) wd.switchTo().window({name});\n",
     "switchToDefaultContent":
-      "        wd = (FirefoxDriver) wd.switchTo().switchToDefaultContent();\n"
+      "        wd = (FirefoxDriver) wd.switchTo().defaultContent();\n"
   },
   locatorByForType: function(stepType, locatorType, locatorIndex) {
     if ({"select.select":1, "select.deselect":1}[stepType.name] && locatorIndex == 2) {
