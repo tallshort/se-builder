@@ -56,10 +56,6 @@ ccm.selenium2.__stepRecords = {
   ],
   "CCMHome.clickGetStarted": [
     {
-      "type": "get",
-      "url": "https://stage.adobecc.com"
-    },
-    {
       "type": "clickElement",
       "locator": {
         "type": "css selector",

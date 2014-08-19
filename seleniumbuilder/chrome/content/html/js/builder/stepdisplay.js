@@ -576,12 +576,13 @@ function confirmTypeSelection(stepID) {
   var type = jQuery('#' + stepID + '-edit-cat-list')[0].__sb_stepType;
   if (type && type.isVirtual()) {
     var records = type.getRecords();
+    var id = uuid.v1();
     for (var i = 0; i < records.length; i++) {
       var newStep = builder.stepFromJSON(records[i], builder.getScript().seleniumVersion);
       newStep.group = {
         "name": type.getName(),
         "packageName": type.getPackageName(),
-        "id": uuid.v1() // to differentiate steps with same group name
+        "id": id // to differentiate steps with same group name
       };
       builder.getScript().addStep(newStep, stepID);
     }
