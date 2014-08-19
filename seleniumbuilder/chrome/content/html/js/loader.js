@@ -133,6 +133,7 @@ builder.loader.mainScripts = [
   "lib/json2.js",
   "lib/js-xpath.js",
   "lib/jquery.csv-0.71.min.js",
+  "lib/uuid.js",
   // Load Selenium IDE Formats & TestCase/Suite
   /*"selenium-ide/xhtml-entities.js",
   "selenium-ide/preferences.js",
@@ -214,6 +215,7 @@ builder.loader.mainScripts = [
   "builder/selenium2/rcPlayback.js",
   "builder/selenium2/recorder.js",
   "builder/selenium2/docs.js",
+  "builder/ccm/ccm.js", // Load enhancements for CCM
   "builder/record.js",
   "builder/dialogs/dialogs.js",
   "builder/dialogs/convert.js",

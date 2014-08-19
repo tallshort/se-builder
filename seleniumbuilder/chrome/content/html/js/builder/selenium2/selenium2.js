@@ -12,8 +12,11 @@ builder.selenium2 = {
 
 builder.seleniumVersions.push(builder.selenium2);
 
-builder.selenium2.StepType = function(name) {
+builder.selenium2.StepType = function(name, packageName) {
   this.name = name;
+  if (packageName != undefined) {
+    this.packageName = packageName;
+  }
 };
 
 builder.selenium2.StepType.prototype = {
@@ -30,7 +33,13 @@ builder.selenium2.StepType.prototype = {
            this.name.startsWith("verify");
   },
   /** @return The note text for this step type, if any. */
-  getNote: function() { return builder.selenium2.__stepNotes[this.name] ? _t(builder.selenium2.__stepNotes[this.name]) : null; }
+  getNote: function() { return builder.selenium2.__stepNotes[this.name] ? _t(builder.selenium2.__stepNotes[this.name]) : null; },
+  /** @return true if a step of this type is actually not a web driver operation. */
+  isVirtual: function() { return this.name.indexOf('.') != -1 },
+  /** @return List of selenium recorded operations */
+  getRecords: function() { return builder.selenium2.__stepRecords[this.name] },
+  /** @return The package name of this type */
+  getPackageName: function() { return this.packageName }
 };
 
 /** Internal step data - converted into stepTypes below. */
@@ -145,6 +154,9 @@ builder.selenium2.__stepNotes = {
   "acceptAlert": 'sel2_must_playback_in_foreground',
   "dismissAlert": 'sel2_must_playback_in_foreground'
 };
+
+/** Empty here. load here */
+builder.selenium2.__stepRecords = {};
 
 /** Map of step types. */
 builder.selenium2.stepTypes = {};

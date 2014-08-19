@@ -59,6 +59,7 @@ builder.Script.prototype = {
       var index = this.getStepIndexForID(afterID);
       if (index !== -1) {
         this.steps.splice(index, 0, step);
+        return;
       }
     }
     this.steps.push(step);
@@ -102,6 +103,7 @@ builder.Step = function(type) {
   this.type = type;
   this.id = builder.__idCounter;
   this.negated = false;
+  this.group = null;
   builder.__idCounter++;
   var pNames = this.type.getParamNames();
   if (pNames) {
@@ -119,6 +121,7 @@ builder.Step = function(type) {
 builder.stepFromJSON = function(parsedJSON, seleniumVersion) {
   var step = new builder.Step(seleniumVersion.stepTypes[parsedJSON.type]);
   step.negated = parsedJSON.negated || false;
+  step.group = parsedJSON.group || null;
   var pNames = step.getParamNames();
   for (var j = 0; j < pNames.length; j++) {
     if (parsedJSON[pNames[j]]) {
@@ -150,6 +153,9 @@ builder.Step.prototype = {
     var cleanStep = { type: this.type.name };
     if (this.negated) {
       cleanStep.negated = true;
+    }
+    if (this.group) {
+      cleanStep.group = this.group;
     }
     var pNames = this.getParamNames();
     for (var j = 0; j < pNames.length; j++) {

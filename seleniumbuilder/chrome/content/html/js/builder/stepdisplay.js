@@ -108,10 +108,11 @@ builder.stepdisplay.updateStep = function(stepID) {
   var script = builder.getScript();
   var step = script.getStepWithID(stepID);
   var paramNames = step.getParamNames();
+  var groupInfoPrefix = step.group != null ? "(" + step.group.name + ") " : "";
   if (step.negated) {
-    jQuery('#' + stepID + '-type').text(_t('not') + " " + builder.translate.translateStepName(step.type.getName()));
+    jQuery('#' + stepID + '-type').text(groupInfoPrefix + _t('not') + " " + builder.translate.translateStepName(step.type.getName()));
   } else {
-    jQuery('#' + stepID + '-type').text(builder.translate.translateStepName(step.type.getName()));
+    jQuery('#' + stepID + '-type').text(groupInfoPrefix + builder.translate.translateStepName(step.type.getName()));
   }
   if (script.seleniumVersion.playback.canPlayback(step.type)) {
     jQuery('#' + stepID + '-unplayable').hide();
@@ -573,14 +574,30 @@ function editType(stepID) {
 function confirmTypeSelection(stepID) {
   var step = builder.getScript().getStepWithID(stepID);
   var type = jQuery('#' + stepID + '-edit-cat-list')[0].__sb_stepType;
-  if (type) {
-    step.changeType(type);
-    step.negated = step.type.getNegatable() && !!(jQuery('#' + stepID + '-edit-negate').attr('checked'));
-  }
-  jQuery('#' + stepID + '-edit-div').remove();
-  jQuery('#' + stepID + '-type').show();
-  builder.stepdisplay.updateStep(stepID);
-  builder.suite.setCurrentScriptSaveRequired(true);
+  if (type && type.isVirtual()) {
+    var records = type.getRecords();
+    for (var i = 0; i < records.length; i++) {
+      var newStep = builder.stepFromJSON(records[i], builder.getScript().seleniumVersion);
+      newStep.group = {
+        "name": type.getName(),
+        "packageName": type.getPackageName(),
+        "id": uuid.v1() // to differentiate steps with same group name
+      };
+      builder.getScript().addStep(newStep, stepID);
+    }
+    deleteStep(stepID);
+    builder.stepdisplay.update();
+  } else {
+    if (type) {
+      step.group = null;
+      step.changeType(type);
+      step.negated = step.type.getNegatable() && !!(jQuery('#' + stepID + '-edit-negate').attr('checked'));
+    }
+    jQuery('#' + stepID + '-edit-div').remove();
+    jQuery('#' + stepID + '-type').show();
+    builder.stepdisplay.updateStep(stepID);
+    builder.suite.setCurrentScriptSaveRequired(true);
+  } 
 }
 
 function selectFirstSearchResult(stepID) {
@@ -905,7 +922,7 @@ function addStep(step) {
           newNode('span', {class:'b-step-number'}),
       
           // The type
-          newNode('a', step.type, {
+          newNode('a', (step.group != null ? "(" + step.group.name + ") " : "") + step.type, {
             id: step.id + '-type',
             class:'b-method',
             click: function() { editType(step.id); }

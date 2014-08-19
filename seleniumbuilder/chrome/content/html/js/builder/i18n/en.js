@@ -287,6 +287,7 @@ m.assertion_sel2_cat = "Assertion";
 m.verify_sel2_cat = "Verify";
 m.wait_sel2_cat = "Wait";
 m.store_sel2_cat = "Store";
+m.ccm_sel2_cat = "Creative Cloud";
 
 // Data-driven
 m.menu_data = "Data";
