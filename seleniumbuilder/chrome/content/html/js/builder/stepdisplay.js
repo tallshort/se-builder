@@ -109,6 +109,10 @@ builder.stepdisplay.updateStep = function(stepID) {
   var step = script.getStepWithID(stepID);
   var paramNames = step.getParamNames();
   var groupInfoPrefix = step.group != null ? "(" + step.group.name + ") " : "";
+  jQuery('#' + stepID + '-type').removeClass("cc");
+  if (groupInfoPrefix) {
+    jQuery('#' + stepID + '-type').addClass("cc");
+  }
   if (step.negated) {
     jQuery('#' + stepID + '-type').text(groupInfoPrefix + _t('not') + " " + builder.translate.translateStepName(step.type.getName()));
   } else {
@@ -925,7 +929,7 @@ function addStep(step) {
           // The type
           newNode('a', (step.group != null ? "(" + step.group.name + ") " : "") + step.type, {
             id: step.id + '-type',
-            class:'b-method',
+            class: (step.group != null ? 'b-method cc' : 'b-method'),
             click: function() { editType(step.id); }
           }),
       

@@ -3,7 +3,8 @@ ccm.selenium2 = {};
 
 ccm.selenium2.__stepData = {
   "SignIn.signIn":                   ["username", "password"],
-  "CCMHome.clickGetStarted":         []
+  "CCMHome.clickGetStarted":         [],
+  "SignOut.logOutFromCC":         []
 };
 
 ccm.selenium2.docs = {
@@ -18,6 +19,10 @@ ccm.selenium2.docs = {
   "CCMHome.clickGetStarted": {
     "packageName": "com.adobe.sst.ccm.pages.global",
     "description": "Clicks 'Get started' in Creative Cloud home page."
+  },
+  "SignOut.logOutFromCC": {
+    "packageName": "com.adobe.sst.ccm.flow",
+    "description": "Sign out Creative Cloud from Global Nav."
   }
 };
 
@@ -62,6 +67,22 @@ ccm.selenium2.__stepRecords = {
         "value": "a.dom-lobby--button"
       }
     }
+  ],
+  "SignOut.logOutFromCC": [
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": "img.globalnav__icon--avatar"
+      }
+    },
+    {
+      "type": "clickElement",
+      "locator": {
+        "type": "css selector",
+        "value": ".globalnav__profile__user-info__management__sign-out"
+      }
+    }    
   ]
 };
 

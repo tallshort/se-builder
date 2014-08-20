@@ -491,6 +491,10 @@ texta {
   position:relative;
 }
 
+.cc {
+  color: blue !important;
+}
+
 .b-param-row {
   display: block;
 }
