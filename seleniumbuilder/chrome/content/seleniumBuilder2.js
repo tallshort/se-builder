@@ -100,7 +100,7 @@ bridge.boot = function() {
   // Make it obvious which tab is recording by turning it green!
   bridge.recordingTab.style.setProperty("background-color", "#bfee85", "important");
   
-  bridge.recorderWindow = window.open("chrome://seleniumbuilder/content/html/gui.html", "seleniumbuilder", "width=550,height=600,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,copyhistory=no,resizable=yes");
+  bridge.recorderWindow = window.open("chrome://seleniumbuilder/content/html/gui.html", "seleniumbuilder", "width=600,height=600,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,copyhistory=no,resizable=yes");
     
   // Install a listener with the browser to be notified when a new document is loaded.
   try {

@@ -2,9 +2,17 @@ var ccm = {};
 ccm.selenium2 = {};
 
 ccm.selenium2.__stepData = {
-  "SignIn.signIn":                   ["username", "password"],
-  "CCMHome.clickGetStarted":         [],
-  "SignOut.logOutFromCC":         []
+  "SignIn.signIn":                                      ["username", "password"],
+  "SignOut.logOutFromCC":                               [],
+  "CCMHome.clickGetStarted":                            [],
+  "CCMHome.clickCreativeCloud":                         [],
+  "CCMHome.clickMarketingCloud":                        [],
+  "CCMHome.clickAcrobat":                               [],
+  "CCMHome.clickManageAccountInLobbyProfile":           [],
+  "CCMHome.clickManageTeamInLobbyProfile":              [],
+  "CCMHome.clickFilesInLobbyProfile":                   [],
+  "CCMHome.clickDesktopInLobbyProfile":                 [],
+  "CCMHeader.navigate2FilesPage":                       []
 };
 
 ccm.selenium2.docs = {
@@ -23,7 +31,15 @@ ccm.selenium2.docs = {
   "SignOut.logOutFromCC": {
     "packageName": "com.adobe.sst.ccm.flow",
     "description": "Sign out Creative Cloud from Global Nav."
-  }
+  },
+  "CCMHome.clickCreativeCloud":                         {},
+  "CCMHome.clickMarketingCloud":                        {},
+  "CCMHome.clickAcrobat":                               {},
+  "CCMHome.clickManageAccountInLobbyProfile":           {},
+  "CCMHome.clickManageTeamInLobbyProfile":              {},
+  "CCMHome.clickFilesInLobbyProfile":                   {},
+  "CCMHome.clickDesktopInLobbyProfile":                 {},
+  "CCMHeader.navigate2FilesPage":                       {}  
 };
 
 ccm.selenium2.__stepRecords = {
