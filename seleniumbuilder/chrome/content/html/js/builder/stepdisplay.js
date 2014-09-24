@@ -412,7 +412,8 @@ function updateTypeDivs(stepID, newType) {
             'span',
             builder.translate.translateStepName(script.seleniumVersion.categories[i][1][j].getName()),
             {
-              class: 'selected-type'
+              class: 'selected-type',
+              title: builder.translate.translateStepName(script.seleniumVersion.categories[i][1][j].getName())
             }
           )));
         } else {
@@ -421,6 +422,7 @@ function updateTypeDivs(stepID, newType) {
             builder.translate.translateStepName(script.seleniumVersion.categories[i][1][j].getName()),
             {
               class: 'not-selected-type',
+              title: builder.translate.translateStepName(script.seleniumVersion.categories[i][1][j].getName()),
               click: mkUpdate(stepID, script.seleniumVersion.categories[i][1][j])
             }
           )));
@@ -586,6 +588,7 @@ function confirmTypeSelection(stepID) {
       newStep.group = {
         "name": type.getName(),
         "packageName": type.getPackageName(),
+        "description": builder.selenium2.docs[type.getName()],
         "id": id // to differentiate steps with same group name
       };
       builder.getScript().addStep(newStep, stepID);

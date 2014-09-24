@@ -2,44 +2,29 @@ var ccm = {};
 ccm.selenium2 = {};
 
 ccm.selenium2.__stepData = {
-  "SignIn.signIn":                                      ["username", "password"],
-  "SignOut.logOutFromCC":                               [],
-  "CCMHome.clickGetStarted":                            [],
-  "CCMHome.clickCreativeCloud":                         [],
-  "CCMHome.clickMarketingCloud":                        [],
-  "CCMHome.clickAcrobat":                               [],
-  "CCMHome.clickManageAccountInLobbyProfile":           [],
-  "CCMHome.clickManageTeamInLobbyProfile":              [],
-  "CCMHome.clickFilesInLobbyProfile":                   [],
-  "CCMHome.clickDesktopInLobbyProfile":                 [],
-  "CCMHeader.navigate2FilesPage":                       []
+  "SignIn.signIn":                                        ["username", "password"],
+  "SignOut.logOutFromCC":                                 [],
+  "SignUp.SignUp":                                        []
 };
 
 ccm.selenium2.docs = {
   "SignIn.signIn": {
     "params": {
-      "username": "CCM username",
-      "password": "CCM password"
+      "username": "CC username",
+      "password": "CC password"
     },
     "packageName": "com.adobe.sst.ccm.flow",
-    "description": "Signs in Creative Cloud from Global Nav."
+    "description": "Sign in Creative Cloud from Global Nav"
   },
-  "CCMHome.clickGetStarted": {
+  "AdobeHome.clickGetStarted": {
     "packageName": "com.adobe.sst.ccm.pages.global",
-    "description": "Clicks 'Get started' in Creative Cloud home page."
+    "description": "Click 'Get started' in Creative Cloud home page"
   },
   "SignOut.logOutFromCC": {
     "packageName": "com.adobe.sst.ccm.flow",
-    "description": "Sign out Creative Cloud from Global Nav."
+    "description": "Sign out Creative Cloud from Global Nav"
   },
-  "CCMHome.clickCreativeCloud":                         {},
-  "CCMHome.clickMarketingCloud":                        {},
-  "CCMHome.clickAcrobat":                               {},
-  "CCMHome.clickManageAccountInLobbyProfile":           {},
-  "CCMHome.clickManageTeamInLobbyProfile":              {},
-  "CCMHome.clickFilesInLobbyProfile":                   {},
-  "CCMHome.clickDesktopInLobbyProfile":                 {},
-  "CCMHeader.navigate2FilesPage":                       {}  
+  "SignUp.SignUp":                                        {}
 };
 
 ccm.selenium2.__stepRecords = {
@@ -75,7 +60,7 @@ ccm.selenium2.__stepRecords = {
       }
     }    
   ],
-  "CCMHome.clickGetStarted": [
+  "AdobeHome.clickGetStarted": [
     {
       "type": "clickElement",
       "locator": {
